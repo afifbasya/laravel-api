@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Alert;
 
 class HomeController extends Controller
 {
@@ -89,9 +90,19 @@ class HomeController extends Controller
         
         // Execute curl and assign returned data
         $response  = curl_exec($ch);
+        $message = json_decode($response);
         
         // Close curl
         curl_close($ch);
+
+        if($message->status == 200)
+        {
+            alert()->success('Success', $message->message);
+        }else 
+        {
+            alert()->error('Error', $message->message);
+        }
+       
 
         return redirect('account/'.$account_number);
     }
@@ -138,11 +149,20 @@ class HomeController extends Controller
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
-        // Execute curl and assign returned data
-        $response  = curl_exec($ch);
-        
-        // Close curl
-        curl_close($ch);
+         // Execute curl and assign returned data
+         $response  = curl_exec($ch);
+         $message = json_decode($response);
+         
+         // Close curl
+         curl_close($ch);
+ 
+         if($message->status == 200)
+         {
+             alert()->success('Success', $message->message);
+         }else 
+         {
+             alert()->error('Error', $message->message);
+         }
 
         return redirect('account/'.$account_number);
     }
@@ -183,11 +203,20 @@ class HomeController extends Controller
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
-        // Execute curl and assign returned data
-        $response  = curl_exec($ch);
-        
-        // Close curl
-        curl_close($ch);
+         // Execute curl and assign returned data
+         $response  = curl_exec($ch);
+         $message = json_decode($response);
+         
+         // Close curl
+         curl_close($ch);
+ 
+         if($message->status == 200)
+         {
+             alert()->success('Success', $message->message);
+         }else 
+         {
+             alert()->error('Error', $message->message);
+         }
 
         return redirect('account/'.$account_number);
     }
@@ -217,11 +246,20 @@ class HomeController extends Controller
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
-        // Execute curl and assign returned data
-        $response  = curl_exec($ch);
-        
-        // Close curl
-        curl_close($ch);
+          // Execute curl and assign returned data
+          $response  = curl_exec($ch);
+          $message = json_decode($response);
+          
+          // Close curl
+          curl_close($ch);
+  
+          if($message->status == 200)
+          {
+              alert()->success('Success', $message->message);
+          }else 
+          {
+              alert()->error('Error', $message->message);
+          }
 
         return redirect('account/'.$account_number);
     }
